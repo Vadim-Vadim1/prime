@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  service-db-P:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: app
+    ports:
+      - "5434:5432"
+    restart: unless-stopped
+
+  pgadmin-P:
+    container_name: pgadmin4_container-p
+    image: dpage/pgadmin4
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    ports:
+      - "5050:80"
